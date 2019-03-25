@@ -8,7 +8,7 @@ const orm = {
             console.log(result);
         });
     },
-    insertOne: function (add) {
+    insertOne: function (burger) {
         const queryString = "INSERT ?? INTO burgers";
         connection.query(queryString, function (err, result) {
             if (err) throw err;
