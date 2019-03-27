@@ -5,13 +5,21 @@ const router = express.Router();
 const burger = require("../models/burgers");
 
 router.get("/", function (req, res) {
-    burger.all(function (data) {
+    res.redirect("/burgers");
+});
+
+router.get("/burgers", function (req, res) {
+    // express callback response by calling burger.selectAllBurger
+    burger.all(function (burgerData) {
+        console.log('BURGER DATA ', burgerData)
+        // wrapper for orm.js that using MySQL query callback will return burger_data, render to index with handlebar
         const hbsObject = {
-            burgers: data
+            burgers: burgerData
         };
-        console.log(hbsObject);
         res.render("index", hbsObject);
+
     });
+
 });
 
 router.post("/api/burger", function (req, res) {
