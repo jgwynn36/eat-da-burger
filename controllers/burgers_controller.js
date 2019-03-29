@@ -23,12 +23,12 @@ router.get("/burgers", function (req, res) {
 });
 
 router.post("/api/burger", function (req, res) {
+    console.log('IS THIS RUNNING??????????????')
     burger.create([
         "burger"
     ], [
         req.body.burger_name
     ], function (result) {
-        // Send back the ID of the new quote
         res.json({
             id: result.insertId
         });
