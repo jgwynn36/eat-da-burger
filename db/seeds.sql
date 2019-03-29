@@ -1,25 +1,27 @@
-INSERT INTO burgers
-    (burger_name, devoured)
-VALUES
-    ('Cheese Burger', true);
+USE burgers_db
 
 INSERT INTO burgers
-    (burger_name, devoured)
+    (burger_name, devoured, createdAt)
 VALUES
-    ('Hamburger', false);
+    ('Cheese Burger', true, CURRENT_TIMESTAMP);
 
 INSERT INTO burgers
-    (burger_name, devoured)
+    (burger_name, devoured, createdAt)
 VALUES
-    ('Causan Chicken Burger', true);
+    ('Hamburger', false, CURRENT_TIMESTAMP);
 
 INSERT INTO burgers
-    (burger_name, devoured)
+    (burger_name, devoured, createdAt)
 VALUES
-    ('Vega Burger', false);
+    ('Causan Chicken Burger', true, CURRENT_TIMESTAMP);
 
 INSERT INTO burgers
-    (burger_name, devoured)
+    (burger_name, devoured, createdAt)
 VALUES
-    ('Turkey Burger', false); 
+    ('Vega Burger', false, CURRENT_TIMESTAMP);
+
+INSERT INTO burgers
+    (burger_name, devoured, createdAt)
+VALUES
+    ('Turkey Burger', false, CURRENT_TIMESTAMP); 
 

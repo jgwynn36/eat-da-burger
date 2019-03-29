@@ -13,7 +13,7 @@ router.get("/burgers", function (req, res) {
     burger.all(function (burgerData) {
         console.log('BURGER DATA ', burgerData)
         // wrapper for orm.js that using MySQL query callback will return burger_data, render to index with handlebar
-        const hbsObject = {
+        let hbsObject = {
             burgers: burgerData
         };
         res.render("index", hbsObject);
@@ -22,33 +22,25 @@ router.get("/burgers", function (req, res) {
 
 });
 
-router.post("/api/burger", function (req, res) {
-    console.log('IS THIS RUNNING??????????????')
+router.post("/burgers/insertOne", function (req, res) {
     burger.create([
-        "burger"
+        "burger_name"
     ], [
         req.body.burger_name
-    ], function (result) {
-        res.json({
-            id: result.insertId
-        });
+    ], function () {
+        res.redirect('/burgers');
     });
 });
 
-router.put("/api/burger/:id", function (req, res) {
+router.put("/burgers/updateOne/:id", function (req, res) {
     const condition = "id = " + req.params.id;
 
     console.log("condition", condition);
 
     burger.update({
-        burger_name: req.body.burger_name
-    }, condition, function (result) {
-        if (result.changedRows == 0) {
-            // If no rows were changed, then the ID must not exist, so 404
-            return res.status(404).end();
-        } else {
-            res.status(200).end();
-        }
+        devoured: req.body.devoured
+    }, condition, function () {
+        res.redirect('/burgers');
     });
 });
 
